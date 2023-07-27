@@ -1,0 +1,7 @@
+/.venv/*
+excel.xlsx
+*.csv
+*/__pycache__/*
+*.pyc
+.token
+db.sqlite3

@@ -1,0 +1,3 @@
+class UniqueObjectError(Exception):
+  pass
+

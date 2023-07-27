@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+{% load static %} 
+<style>
+  body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    margin: 0px;
+    background-color: black;
+    background-image: url({% static "bg.jpg" %});
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: center;
+    height: 100vh;
+  }
+
+  .column {
+    padding: 0px;
+    float: left;
+    width: 100%;
+    text-align: center;
+    display: table-cell;
+  }
+
+  .text_class {
+    color: white;
+    font-size: 18pt
+  }
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .right_col {
+    background-color: black;
+  }
+
+  .vdrbody {
+    width: 80%;
+    display: inline-block;
+    overflow: hidden;
+    line-height: 20px;
+    text-align: center;
+    padding: 10px;
+  }
+
+  @media only screen and (max-width: 1000px) {
+    .column {
+      width: 100%;
+    }
+
+    .vdrbody {
+      width: 80%;
+      display: inline-block;
+      overflow: hidden;
+      line-height: 20px;
+      text-align: center;
+      padding: 10px;
+    }
+  }
+
+  .input_body {}
+
+  .vdrbody span {
+    display: inline-block;
+    vertical-align: top;
+    text-align: justify;
+    color: white
+  }
+
+
+
+  .buttons {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #f44336;
+    color: white;
+    border-radius: 40px;
+    border: none;
+    padding: 5px 15px;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: 500;
+    font-size: 28pt;
+    font-family: 'Montserrat', sans-serif;
+    -webkit-transition: 0.2s all;
+    transition: 0.2s all;
+  }
+
+
+  .buttons:hover {
+    font-size: 28pt;
+    background-color: white;
+    color: #f44336;
+
+  }
+
+
+  textarea {
+    min-width: 50%;
+  }
+
+  input[type="radio"] {
+    transform: scale(1.5);
+  }
+
+  input[type="radio"]:checked+span {
+    font-weight: bold;
+  }
+</style>
+
+<div style="width: 100%; heigth: 70%; text-align: center; padding: 15% 0;">
+  <div style="vertical-align: top; width: 60%; display: inline">
+    <form action="download_excel"><input type="submit" class="buttons" value="Scarica excel"></form>
+  </div>
+  <br><br>
+  <div style="vertical-align: bottom; width: 60%; display: inline">
+    <form action="/admin"><input type="submit" class="buttons" value="Accedi ai dati"></form>
+  </div>
+</div>
+</div>
+{% else %}
+<p class="text_class">You are not logged in</p>
+<a href="{% url 'login' %}">login</a>
+{% endif %}
+{% endblock %}
